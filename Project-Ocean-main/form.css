@@ -1,0 +1,43 @@
+* {
+    font-family: 'Orbitron', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: linear-gradient(to right, rgb(15, 222, 230),rgb(8, 132, 141));
+}
+
+h1 {
+    text-align: center;
+    margin-top: 25px;
+    position: relative;
+    font-size: 46px;
+}
+
+form {
+    margin: 40px;    
+    width: 400px;   
+    position: absolute; 
+    top: 20%;
+    left: 35%;    
+
+}
+
+div {
+    margin-bottom: 10px ;
+}
+
+label {
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-image: linear-gradient(to right,#337aff,#003ba8);
+    border-radius: 10px;
+    margin-top: 10px;
+    
+}
+
+#exit {
+    color: azure;
+}

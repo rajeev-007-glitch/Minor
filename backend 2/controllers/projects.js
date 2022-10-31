@@ -1,10 +1,9 @@
 const Project = require("../models/project")
 const { BadRequestError, NotFoundError } = require("../errors")
-const asyncWrapper = require("../middleware/async")
 const product = require("../../../nodejs/July learning/04-store-api/models/product")
 const project = require("../models/project")
 
-const getAllProject = asyncWrapper(async (req, res) => {
+const getAllProject = async (req, res) => {
   // const projects = await Project.find({})
   // res.status(200).json({ projects })
 
@@ -49,14 +48,15 @@ const getAllProject = asyncWrapper(async (req, res) => {
 
   const projects = await result
   res.status(200).json({projects, nbhits: projects.length})
-})
+}
 
-const createProject = asyncWrapper(async (req, res) => {
+const createProject = async (req, res) => {
+  req.body.createdBy = req.user.userId
   const project = await Project.create(req.body)
   res.status(201).json({ project })
-})
+}
 
-const getProject = asyncWrapper(async (req, res) => {
+const getProject = async (req, res) => {
   const { id: projectId } = req.params
   const project = await Project.findOne({ _id: projectId })
   if (!project) {
@@ -64,9 +64,9 @@ const getProject = asyncWrapper(async (req, res) => {
       
   }
   res.status(200).json({ project })
-})
+}
 
-const updateProject = asyncWrapper(async (req, res) => {
+const updateProject = async (req, res) => {
   const { id: projectId } = req.params
   const project = await Project.findOneAndUpdate({ _id: projectId }, req.body, {
     new: true,
@@ -76,9 +76,9 @@ const updateProject = asyncWrapper(async (req, res) => {
     throw new NotFoundError(`Project with projectId: ${projectId} does not exist...`)
   }
   res.status(200).json({ project })
-})
+}
 
-const deleteProject = asyncWrapper(async (req, res) => {
+const deleteProject = async (req, res) => {
   const { id: projectId } = req.params
   const peoject = await Project.findByIdAndDelete({ _id: projectId })
   if (!project) {
@@ -87,7 +87,7 @@ const deleteProject = asyncWrapper(async (req, res) => {
   res.status(200).json({
     msg: `Project with projectId: ${projectId} has been successfully deleted...`,
   })
-})
+}
 
 module.exports = {
   getAllProject,

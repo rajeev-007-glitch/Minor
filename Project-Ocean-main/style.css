@@ -1,0 +1,44 @@
+body {
+    font-family: 'Orbitron', sans-serif;
+    /*font-family: 'Patrick Hand', cursive;*/
+}
+
+/**************************** Navbar Section ****************************/
+.navbar-nav li {
+    margin: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    
+}
+
+#nav-bar {
+    background-image: linear-gradient(to right,#337aff,#003ba8);
+    padding: 10px !important;
+}
+
+.navbar-brand img
+{
+    height: 60px;
+    padding-left:10px;
+    border-radius: 50px;
+    border: none;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+/******************** Philosophy Section **************************/
+#Philosophy {
+    background-image: linear-gradient(to right,#337aff,#003ba8);
+    }
+
+.promo-title {
+    margin-top: 100px;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.btn-primary {
+    background-image: linear-gradient(to right, rgb(15, 222, 230),rgb(8, 132, 141));
+    
+}

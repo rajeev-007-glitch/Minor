@@ -1,5 +1,6 @@
 const express = require("express")
 const projects = require("./routes/projects")
+const authRouter = require("./routes/auth")
 const app = express()
 const connectDb = require("./db/connect")
 const errorHandler = require("./middleware/error-handler")
@@ -9,6 +10,7 @@ require("dotenv").config()
 // middleware
 app.use(express.json())
 app.use("/api/v1/projects", projects)
+app.use("/api/v1/auth", authRouter)
 app.use(notFound)
 app.use(errorHandler)
 const port = process.env.PORT || 8080
