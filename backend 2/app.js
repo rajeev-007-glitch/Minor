@@ -2,13 +2,14 @@ require("dotenv").config()
 require("express-async-errors")
 
 // Security Imports
+const path = require('path')
 const helmet = require("helmet")
-const cors = require("cors")
 const xss = require("xss-clean")
-const rateLimiter = require("express-rate-limit")
 
 const express = require("express")
 const app = express()
+// app.use(express.static('./public'));
+// app.use(express.urlencoded({extended:false}))
 
 // connect DB
 const connectDb = require("./db/connect")
@@ -22,24 +23,17 @@ const errorHandlerMiddleware = require("./middleware/error-handler")
 const authenticateUser = require("./middleware/authentication")
 
 // extra packages
-app.set("trust proxy", 1)
+app.use(express.static(path.resolve(__dirname, './client/build')))
 app.use(express.json())
 app.use(helmet())
-app.use(cors())
 app.use(xss())
-app.use(
-  rateLimiter({
-    windowsMs: 15 * 60 * 1000, // 15 minutes
-    max: 100, // limit each IP for only 100 requests per 15 minutes
-  })
-)
 // app.use(express.static('./public'))
 
 // routes
 app.use("/api/v1/auth", authRouter)
 app.use("/api/v1/projects",authenticateUser, projectRouter)
 
-
+app.use(express.static(path.resolve(__dirname, './client/build')))
 app.use(express.json())
 app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)
