@@ -50,17 +50,15 @@ const updateUser = async (req, res) => {
 
   const token = user.createJWT()
 
-  res.send(
-    StatusCodes.OK.json({
-      user: {
-        email: user.email,
-        lastName: user.lastName,
-        name: user.name,
-        location: user.location,
-        token,
-      },
-    })
-  )
+  res.send(StatusCodes.OK).json({
+    user: {
+      email: user.email,
+      lastName: user.lastName,
+      name: user.name,
+      location: user.location,
+      token,
+    },
+  })
 }
 
 const register = async (req, res) => {
@@ -81,5 +79,5 @@ const register = async (req, res) => {
 module.exports = {
   login,
   register,
-  updateUser
+  updateUser,
 }
