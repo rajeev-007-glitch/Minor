@@ -23,7 +23,7 @@ const errorHandlerMiddleware = require("./middleware/error-handler")
 const authenticateUser = require("./middleware/authentication")
 
 // extra packages
-app.use(express.static(path.resolve(__dirname, './client/build')))
+app.use(express.static('./public'))
 app.use(express.json())
 app.use(helmet())
 app.use(xss())
@@ -32,8 +32,8 @@ app.use(xss())
 // routes
 app.use("/api/v1/auth", authRouter)
 app.use("/api/v1/projects",authenticateUser, projectRouter)
+// app.use("/api/v1/projects", projectRouter)
 
-app.use(express.static(path.resolve(__dirname, './client/build')))
 app.use(express.json())
 app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)
