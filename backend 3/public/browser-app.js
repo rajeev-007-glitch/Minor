@@ -9,14 +9,15 @@ const projectTechnologyUsedDOM = document.querySelector(".technologyUsed")
 
 const showProject = async () => {
   loadingDOM.getElementsByClassName.visiblity = "visible"
-  const userToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzVmOGQzMzUzMTY3MzIyODBkNTJlNDQiLCJuYW1lIjoiUmFtIiwiaWF0IjoxNjY3ODQ1MjIyLCJleHAiOjE2NzA0MzcyMjJ9.Fj4JVsDR92eGQdBsh6EewXpg4NtJBoFKTYeGHhvinZw'
+  const userToken =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzVmOGQzMzUzMTY3MzIyODBkNTJlNDQiLCJuYW1lIjoiUmFtIiwiaWF0IjoxNjY4MTkzODY2LCJleHAiOjE2NzA3ODU4NjZ9.hRv82JypLm11j6blQefUrnKy0maNLhJKMC4W-NyU5RM"
   try {
     const {
       data: { projects },
     } = await axios.get("api/v1/projects", {
-        headers: {
-            'Authorization': 'Bearer ' + userToken
-        }
+      headers: {
+        Authorization: "Bearer " + userToken,
+      },
     })
     if (projects.length < 1) {
       projectDOM.innerHTML =
@@ -24,8 +25,21 @@ const showProject = async () => {
       loadingDOM.style.visibility = "hidden"
       return
     }
-    const allProjects = projects.map((project)=>{
-        const {_id: projectId, projectName, discription, author, collaborator, TechnologyUsed, createdAt, createdBy, rating, deployment, code} = project
+    const allProjects = projects
+      .map((project) => {
+        const {
+          _id: projectId,
+          projectName,
+          discription,
+          author,
+          collaborator,
+          TechnologyUsed,
+          createdAt,
+          createdBy,
+          rating,
+          deployment,
+          code,
+        } = project
         return `<div class="single-project">
                 <h5><span><i class="far fa-check-circle"></i></span>${projectName}</h5>
                 <h5><span><i class="far fa-check-circle"></i></span>${discription}</h5>
@@ -38,7 +52,8 @@ const showProject = async () => {
                 <h5><span><i class="far fa-check-circle"></i></span>${deployment}</h5>
                 <h5><span><i class="far fa-check-circle"></i></span>${code}</h5>
                 <div class="project-links">`
-    }).join('')
+      })
+      .join("")
     projectDOM.innerHTML = allProjects
   } catch (error) {
     console.log(error)
@@ -48,5 +63,3 @@ const showProject = async () => {
 }
 
 showProject()
-
-
