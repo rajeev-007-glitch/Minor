@@ -10,7 +10,7 @@ const projectTechnologyUsedDOM = document.querySelector(".technologyUsed")
 const showProject = async () => {
   loadingDOM.getElementsByClassName.visiblity = "visible"
   const userToken =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzVmOGQzMzUzMTY3MzIyODBkNTJlNDQiLCJuYW1lIjoiUmFtIiwiaWF0IjoxNjY4MTkzODY2LCJleHAiOjE2NzA3ODU4NjZ9.hRv82JypLm11j6blQefUrnKy0maNLhJKMC4W-NyU5RM"
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzliMzY2MDk3YTU5YzU4OTQwMjAwMWUiLCJuYW1lIjoiTmVvbiIsImlhdCI6MTY3MTExNjg1NiwiZXhwIjoxNjczNzA4ODU2fQ._39DW8M_cdAiEJR0fxD09v2w9V9iIj6jn2c6Xh1BsgM"
   try {
     const {
       data: { projects },
